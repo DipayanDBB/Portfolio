@@ -230,7 +230,23 @@
                 line-height: 40px;
                 transition: all 0.5s ease;
                 z-index: 100;
+                overflow-y:auto;
             }
+                 nav .navbar .nav-links::-webkit-scrollbar{
+                width:3px;
+                background:rgba(0,0,0,0.2);
+                visibility:hidden;
+           }
+          nav .navbar .nav-links::-webkit-scrollbar-thumb{
+                background:rgba(0,0,0,0.3);
+                border-radius:20px;
+                visibility:hidden;
+           }
+           nav .navbar .nav-links::-webkit-scrollbar-track{
+                background:yellow;
+                opacity:0.10;
+                visibility:hidden;
+           }
 
             nav .navbar .nav-links .sidebar-logo {
                 display: flex;
@@ -322,14 +338,6 @@
             nav .navbar .nav-links {
                 max-width: 100%;
             }
-        }
-        .htmlCss-arrow, .js-arrow, .more-arrow::-webkit-scrollbar{
-            width:3px;
-            background:rgba(0,0,0,0.3);
-        }
-        .htmlCss-arrow, .js-arrow, .more-arrow::-webkit-scrollbar-thumb{
-            background:rgba(0,0,0,0.6);
-            border-radius:20px;
         }
     </style>
 </head>
