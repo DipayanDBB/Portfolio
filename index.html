@@ -7,6 +7,10 @@
     <title>PortFolio</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
+        :root{
+            --primary-color:#3a8da8;
+            --secondary-color:#fff;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +24,7 @@
             left: 0;
             width: 100%;
             height: 70px;
-            background: #3a8da8;
+            background: var(--primary-color);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
@@ -35,7 +39,7 @@
         }
 
         nav .navbar .logo a {
-            color: #fff;
+            color: var(--secondary-color);
             font-size: 30px;
             font-weight: 600;
             text-decoration: none;
@@ -60,7 +64,7 @@
 
         nav .navbar .nav-links .links li a {
             height: 100%;
-            color: #fff;
+            color: var(--secondary-color);
             text-decoration: none;
             white-space: nowrap;
             font-size: 16px;
@@ -72,7 +76,7 @@
             width: 22px;
             line-height: 70px;
             text-align: center;
-            color: #fff;
+            color: var(--secondary-color);
             transition: all 0.3s ease;
         }
 
@@ -85,7 +89,7 @@
             position: absolute;
             top: 70px;
             left: 0;
-            background: #3a8da8;
+            background: var(--primary-color);
             line-height: 40px;
             border-radius: 0 0 4px 4px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -130,7 +134,7 @@
         }
 
         .navbar .search-box i {
-            color: #fff;
+            color: var(--secondary-color);
             position: absolute;
             height: 100%;
             width: 100%;
@@ -143,7 +147,7 @@
         .navbar .search-box .input-box {
             height: 60px;
             width: 300px;
-            background: #3a8da8;
+            background: var(--primary-color);
             position: absolute;
             top: 80px;
             right: calc(100% - 40px);
@@ -164,7 +168,7 @@
             position: absolute;
             height: 20px;
             width: 20px;
-            background: #3a8da8;
+            background: var(--primary-color);
             right: 10px;
             top: -6px;
             transform: rotate(45deg);
@@ -218,7 +222,7 @@
                 left: -100%;
                 max-width: 270px;
                 width: 100%;
-                background: #3a8da8;
+                background: var(--primary-color);
                 padding: 20px;
                 line-height: 40px;
                 transition: all 0.5s ease;
@@ -234,7 +238,7 @@
             .navbar .bx-menu,
             .nav-links .sidebar-logo .logo_name,
             .nav-links .sidebar-logo .bx-x {
-                color: #fff;
+                color: var(--secondary-color);
                 font-size: 25px;
                 font-weight: 500;
             }
