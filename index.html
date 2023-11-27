@@ -3,488 +3,419 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN PAGE</title>
+    <title>PortFolio</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
-                     /* STARTED CSS CODES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-                    @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap);
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: #3a8da8;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
 
+        nav .navbar {
+            max-width: 1200px;
+            height: 100%;
+            padding: 0 50px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
-}
+        nav .navbar .logo a {
+            color: #fff;
+            font-size: 30px;
+            font-weight: 600;
+            text-decoration: none;
+        }
 
-ion-icon{
-    color:#b3b3b3;
-}
+        nav .navbar .nav-links {
+            height: 100%;
+            line-height: 70px;
+        }
 
-body {
-    background: #020410;
-    overflow-y: hidden;
-}
+        nav .navbar .nav-links .links {
+            display: flex;
+        }
 
-.background {
-    width: 100%;
-    height: 100vh;
-    background: url(1.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-    filter: blur(5px);
-}
+        nav .navbar .nav-links .links li {
+            position: relative;
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0 14px;
+        }
 
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 25px 12.5%;
-    background-color: transparent;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100%;
-}
+        nav .navbar .nav-links .links li a {
+            height: 100%;
+            color: #fff;
+            text-decoration: none;
+            white-space: nowrap;
+            font-size: 16px;
+            font-weight: 500;
+        }
 
-.navbar a {
-    position: relative;
-    font-size: 16px;
-    color: #e4e4e4;
-    text-decoration: none;
-    font-weight: 500;
-    margin-right: 30px;
-}
+        nav .navbar .nav-links .links li .arrow {
+            height: 100%;
+            width: 22px;
+            line-height: 70px;
+            text-align: center;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
 
-.navbar a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 2px;
-    background: #e4e4e4;
-    border-radius: 5px;
-    transform: translateY(10px);
-    transition: .5s;
-    opacity: 0;
-}
+        .navbar .nav-links .links li:hover .htmlcss-arrow,
+        .navbar .nav-links .links li:hover .js-arrow {
+            transform: rotate(180deg);
+        }
 
-.navbar a:hover::after {
-    transform: translateY(0);
-    opacity: 1;
-}
+        .navbar .nav-links .links .sub-menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            background: #3a8da8;
+            line-height: 40px;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
 
-.search-bar {
-    width: 250px;
-    height: 45px;
-    background: transparent;
-    border: 2px solid #e4e4e4;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-}
+        .navbar .nav-links .links .sub-menu li {
+            padding: 0 22px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-.search-bar input {
-    width: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    color: #e4e4e4;
-    padding-left: 10px;
-}
+        .navbar .nav-links .links .sub-menu li .more-arrow {
+            line-height: 40px;
+        }
 
-.search-bar input::placeholder {
-    color: #f0efef65;
-}
+        .navbar .nav-links .links .sub-menu li a {
+            font-size: 15px;
+            font-weight: 500;
+        }
 
-.search-bar button {
-    width: 40px;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
+        .navbar .nav-links .links li:hover .htmlCss-sub-menu,
+        .navbar .nav-links .links li:hover .js-sub-menu {
+            display: block;
+        }
 
-.search-bar button ion-icon {
-    font-size: 22px;
-    color: #fff;
+        .navbar .nav-links .links .more .more-sub-menu {
+            position: absolute;
+            top: 0%;
+            left: 100%;
+            border-radius: 0 4px 4px 4px;
+            display: none;
+        }
 
-}
+        .navbar .nav-links .links .more:hover .more-sub-menu {
+            display: block;
+        }
 
+        .navbar .search-box {
+            position: relative;
+            height: 40px;
+            width: 40px;
+        }
 
+        .navbar .search-box i {
+            color: #fff;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 600;
+        }
 
-.container {
-    position: absolute;
-    top: 13%;
-    left: 12.5%;
-    transform: translate(-50% -50%);
-    width: 75%;
-    height: 550px;
-    background: url('1.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    margin-top: 20px;
-}
+        .navbar .search-box .input-box {
+            height: 60px;
+            width: 300px;
+            background: #3a8da8;
+            position: absolute;
+            top: 80px;
+            right: calc(100% - 40px);
+            border-radius: 6px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
 
-.container .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 58%;
-    height: 100%;
-    background-color: transparent;
-    padding: 80px;
-    color: #e4e4e4;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
+        .navbar.showInput .search-box .input-box {
+            top: 65px;
+            opacity: 1;
+            pointer-events: auto;
+        }
 
-.content .logo {
-    font-size: 30px;
-    text-shadow: 2px 2px 3px grey;
-}
+        .navbar .search-box .input-box::before {
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background: #3a8da8;
+            right: 10px;
+            top: -6px;
+            transform: rotate(45deg);
+        }
 
-.text-sci h2 {
-    font-size: 40px;
-    line-height: 1;
-}
+        .navbar .search-box .input-box input {
+            height: 35px;
+            width: 280px;
+            z-index: 98;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            outline: none;
+            border: none;
+            border-radius: 4px;
+            padding: 0 15px;
+            font-size: 16px;
+        }
 
-.text-sci h2 span {
-    font-size: 23px;
-}
+        .navbar .bx-menu,
+        .nav-links .sidebar-logo .logo_name,
+        .nav-links .sidebar-logo .bx-x {
+            display: none;
+        }
 
-.text-sci p {
-    font-size: 16px;
-    margin: 20px 0;
-}
+        @media (max-width:954px) {
+            nav .navbar {
+                max-width: 100%;
+                padding: 0 25px;
+            }
 
-.social-icons a ion-icon {
-    font-size: 22px;
-    color: #e4e4e4;
-    margin-right: 10px;
-    transition: .5s ease;
-}
+            nav .navbar .logo a {
+                font-size: 26px;
+            }
 
-.social-icons a:hover ion-icon {
-    transform: scale(1.2)
-}
+            nav .navbar .nav-links .links li {
+                padding: 0 10px;
+            }
 
+            nav .navbar .nav-links .links li a {
+                font-size: 15px;
+            }
+        }
 
-.container .logreg-box {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: calc(100% - 58%);
-    height: 100%;
-    overflow: hidden;
-}
+        @media (max-width:800px) {
+            nav .navbar .nav-links {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                max-width: 270px;
+                width: 100%;
+                background: #3a8da8;
+                padding: 20px;
+                line-height: 40px;
+                transition: all 0.5s ease;
+                z-index: 100;
+            }
 
-.logreg-box .form-box {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    color: #e4e4e4;
-}
+            nav .navbar .nav-links .sidebar-logo {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-.logreg-box .form-box.login {
-    transform: translateX(0);
-    transition: transform .6s ease;
-    transition-delay: .7s;
-}
+            .navbar .bx-menu,
+            .nav-links .sidebar-logo .logo_name,
+            .nav-links .sidebar-logo .bx-x {
+                color: #fff;
+                font-size: 25px;
+                font-weight: 500;
+            }
 
-.logreg-box.active .form-box.login {
-    transform: translateX(430px);
-    transition-delay: 0s;
-}
+            .navbar .bx-menu,
+            .nav-links .sidebar-logo .logo_name,
+            .nav-links .sidebar-logo .bx-x {
+                display: block;
+            }
 
-.logreg-box .form-box.register {
-    transform: translateX(430px);
-    transition: transform .6s ease;
-    transition-delay: 0s;
-}
+            nav .navbar .nav-links .links {
+                display: block;
+                margin: 20px;
+            }
 
-.logreg-box.active .form-box.register {
-    transform: translateX(0);
-    transition-delay: .7s;
-}
+            nav .navbar .nav-links .links li {
+                display: block;
+            }
 
-.form-box h2 {
-    font-size: 32px;
-    text-align: center;
-}
+            .navbar .nav-links .links .sub-menu {
+                display: none;
+                position: relative;
+                top: 0;
+                left: 0;
+                box-shadow: none;
+            }
 
-.form-box .input-box {
-    position: relative;
-    width: 340px;
-    height: 50px;
-    border-bottom: 2px solid #e4e4e4;
-    margin: 30px 0;
-}
+            .navbar .nav-links .links .sub-menu li {
+                border-bottom: none;
+            }
+            .navbar .nav-links .links .more .more-sub-menu{
+                position: relative;
+                display: none;
+                left: 0;
+            }
 
-.input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    color: #e4e4e4;
-    font-weight: 500;
-    padding-right: 28px;
-}
+            .navbar .nav-links .links li:hover .htmlCss-sub-menu,
+            .navbar .nav-links .links li:hover .js-sub-menu {
+                display: none;
+            }
 
-.input-box label {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    font-size: 16px;
-    font-weight: 500;
-    pointer-events: none;
-    transition: .5s ease;
-}
+            .navbar .nav-links .links .more:hover .more-sub-menu{
+                display: none;
+            }
 
-.input-box input:focus~label,
-.input-box input:valid~label {
-    top: -5px;
-}
+            nav .navbar .nav-links .links li .arrow {
+                line-height: 40px;
+            }
 
-.input-box .icon {
-    position: absolute;
-    top: 13px;
-    right: 0;
-    font-size: 19px;
-}
+            .navbar .nav-links .links li:hover .htmlcss-arrow,
+            .navbar .nav-links .links li:hover .js-arrow {
+                transform: rotate(0deg);
+            }
 
-.form-box .remember-forget {
-    font-size: 14.5px;
-    font-weight: 500;
-    margin: 15px 0 15px;
-    display: flex;
-    justify-content: space-between;
-}
+            .navbar .nav-links.show1 .links .sub-menu.htmlCss-sub-menu {
+                display: block;
+            }
 
-.remember-forget label input {
-    accent-color: #e4e4e4;
-    margin-right: 3px;
-}
+            .navbar .nav-links.show2 .links .sub-menu .more-arrow {
+                transform: rotate(90deg);
+            }
 
-.remember-forget a {
-    color: #e4e4e4;
-    text-decoration: none;
-}
+            .navbar .nav-links.show2 .links .more .more-sub-menu {
+                display: block;
+            }
 
-.remember-forget a:hover {
-    text-decoration: underline;
-}
+            .navbar .nav-links.show3 .links .sub-menu.js-sub-menu {
+                display: block;
+            }
 
-.btn {
-    width: 100%;
-    height: 30px;
-    background: #c41034;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    color: #e4e4e4;
-    font-weight: 500;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-}
+            .navbar .nav-links.show1 .links li .htmlcss-arrow,
+            .navbar .nav-links.show3 .links li .js-arrow {
+                transform: rotate(180deg);
+            }
+        }
 
-.form-box .login-register {
-    font-size: 14.5px;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 25px;
-}
+        @media(max-width:370px) {
+            nav .navbar .nav-links {
+                max-width: 100%;
+            }
+        }
 
-.login-register p a {
-    color: #e4e4e4;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.login-register p a:hover {
-    text-decoration: underline;
-}
-
-/* END OF CSS CODES */
+        .bx{
+            cursor: pointer;
+        }
     </style>
-
-    <!-- STARTED HTML CODES -->
 </head>
 
 <body>
-    <div class="background"></div>
-
-    <header class="header">
-        <nav class="navbar">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </nav>
-
-        <form action="" class="search-bar">
-            <input type="text" placeholder="Search...">
-            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
-        </form>
-    </header>
-
-    
-    
-    <div class="container">
-        <div class="content">
-            <h2 class="logo"><ion-icon name="logo-firefox"></ion-icon>Chammak</h2>
-
-            <div class="text-sci">
-                <h2>Welcome!<br><span>To our New Website</span></h2>
-
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, earum.</p>
-
-                <div class="social-icons">
-                    <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
-
+    <nav>
+        <div class="navbar">
+            <i class="bx bx-menu" style="cursor: pointer;"></i>
+            <div class="logo"><a href="index.html">PortFolio</a></div>
+            <div class="nav-links">
+                <div class="sidebar-logo">
+                    <span class="logo_name">PortFolio</span>
+                    <i class="bx bx-x"></i>
+                </div>
+                <ul class="links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li>
+                        <a href="#">HTML & CSS</a>
+                        <i class="bx bxs-chevron-down arrow htmlcss-arrow"></i>
+                        <ul class="htmlCss-sub-menu sub-menu">
+                            <li><a href="#">Web Design</a></li>
+                            <li><a href="#">Login Form</a></li>
+                            <li><a href="#">Card Design</a></li>
+                            <li class="more">
+                                <a href="#">More</a>
+                                <i class="bx bxs-chevron-right arrow more-arrow"></i>
+                                <ul class="more-sub-menu sub-menu">
+                                    <li><a href="#">Dynamic Calculator</a></li>
+                                    <li><a href="#">Form Validation</a></li>
+                                    <li><a href="#">Calendar</a></li>
+                                    <li><a href="#">Digital Clock</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">JAVASCRIPT</a>
+                        <i class="bx bxs-chevron-down arrow js-arrow"></i>
+                        <ul class="js-sub-menu sub-menu">
+                            <li><a href="#">Dynamic Calculator</a></li>
+                            <li><a href="#">Form Validation</a></li>
+                            <li><a href="#">Calendar</a></li>
+                            <li><a href="#">Digital Clock</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">CONTACT US</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                </ul>
+            </div>
+            <div class="search-box">
+                <i class="bx bx-search"></i>
+                <div class="input-box">
+                    <input type="text" placeholder="Search...">
                 </div>
             </div>
         </div>
+    </nav>
 
-        <div class="logreg-box">
-            <div class="form-box login">
-                <form action="#">
-                    <h2>Sign In</h2>
-
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                        <input type="email" required>
-                        <label>Email</label>
-                    </div>
-
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="lock-closed-outline" id="ionIcon"></ion-icon></span>
-                        <input type="password" required id="password">
-                        <label>Password</label>
-                    </div>
-
-                    <div class="remember-forget">
-                        <label>
-                            <input type="checkbox"> Remember ME
-                        </label>
-                        <a href="#">Forget Password</a>
-                    </div>
-
-                    <button type="submit" class="btn">Sign In</button>
-
-                    <div class="login-register">
-                        <p>Don't have an account <a href="#" class="register-link">Sign Up</a></p>
-                    </div>
-                </form>
-            </div>
-
-
-            <div class="form-box register">
-                <form action="#">
-                    <h2>Sign Up</h2>
-
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="person-circle-outline" ></ion-icon></span>
-                        <input type="text" required>
-                        <label>Name</label>
-                    </div>
-
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                        <input type="email" required>
-                        <label>Email</label>
-                    </div>
-
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="lock-closed-outline" id="ionIcon"></ion-icon></span>
-                        <input type="password" required id="password">
-                        <label>Create Password</label>
-                    </div>
-
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="lock-closed-outline" id="ionIcon"></ion-icon></span>
-                        <input type="password" required id="password">
-                        <label>Confirm Password</label>
-                    </div>
-
-                    <div class="remember-forget">
-                        <label>
-                            <input type="checkbox"> I agree to the Terms & Condition
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn">Sign Up</button>
-
-                    <div class="login-register">
-                        <p>Already have an account <a href="#" class="login-link">Sign In</a></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- END HTML CODE -->
-
-
-    <!-- ICON SCRIPT LINK -->
-   <script type = "module" src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-
-<script type = "nomodule" src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-<!-- STARTED SCRIPT HERE -->
     <script>
-        //STARTED JAVASCRIPT CODE
-let password = document.getElementById('password');
-let ionIcon = document.getElementById('ionIcon');
+        let navbar = document.querySelector(".navbar");
+        let searchBox = document.querySelector(".search-box .bx-search");
+        //<i class="bx bx-x"></i>
+        searchBox.addEventListener("click", () => {
+            navbar.classList.toggle("showInput");
+            if (navbar.classList.contains("showInput")) {
+                searchBox.classList.replace("bx-search", "bx-x");
+            } else {
+                searchBox.classList.replace("bx-x", "bx-search");
+            }
+        });
 
-ionIcon.onclick = function(){
-    if(password.type == "password"){
-        password.type = "text";
-        ionIcon.src = "";
-    }else{
-        password.type = "password";
-        ionIcon.src = "";
-    }
-}
+        //Sidebar open close js code
+        let menuOpenBtn = document.querySelector(".navbar .bx-menu");
+        let closeMenuBtn = document.querySelector(".nav-links .bx-x");
+        let navLinks = document.querySelector(".nav-links");
 
-const logregBox = document.querySelector('.logreg-box');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
+        menuOpenBtn.addEventListener("click", () => {
+            navLinks.style.left = "0";
+        });
 
+        closeMenuBtn.addEventListener("click", () => {
+            navLinks.style.left = "-100%";
+        });
 
-registerLink.addEventListener('click', () => {
-    logregBox.classList.add('active');
-});
-
-loginLink.addEventListener('click', () => {
-    logregBox.classList.remove('active');
-});
-
-              //  END JAVASCRIPT CODE 
+        //Sidebar sub menu open close js code
+        let htmlcssArrow = document.querySelector(".htmlcss-arrow");
+        htmlcssArrow.addEventListener("click", () => {
+            navLinks.classList.toggle("show1");
+        });
+        let moreArrow = document.querySelector(".more-arrow");
+        moreArrow.addEventListener("click", ()=>{
+            navLinks.classList.toggle("show2");
+        });
+        let jsArrow = document.querySelector(".js-arrow");
+        jsArrow.addEventListener("click", () => {
+            navLinks.classList.toggle("show3");
+        });
     </script>
 </body>
 
