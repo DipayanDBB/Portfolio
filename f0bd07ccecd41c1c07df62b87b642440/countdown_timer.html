@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown Timer</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: linear-gradient(145deg, #432371, #f5a35c);
+            color: #fff;
+        }
+        h1{
+            font-size: 48px;
+            margin-bottom: 40px;
+            letter-spacing: 1.5px;
+            user-select: none;
+            text-shadow: 1px 1px #000;
+            text-align: center;
+        }
+        .countdown{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            padding: 40px 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+        }
+        .timer{
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            margin: 0 20px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-width: 100px;
+            max-width: 160px;
+            height: 100%;
+            transition: background 0.2s ease-in-out;
+        }
+        .timer .time{
+            font-size: 40px;
+            font-weight: 700;
+            user-select: none;
+        }
+        .timer .label{
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px #000;
+            user-select: none;
+        }
+        .timer:hover{
+            background: rgba(255,255,255,0.25);
+        }
+        @media screen and (max-width:1024px) {
+            h1{
+                font-size: 38px;
+            }
+            .countdown{
+                flex-wrap: wrap;
+            }
+            .timer{
+                max-height: 150px;
+                margin: 4px 15px;
+            }
+        }
+        @media screen and (max-width:240px) {
+            h1{
+            font-size: 18px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        .countdown{
+            padding: 10px 5px;
+        }
+            .timer{
+            padding: 5px;
+            margin: 4px 10px;
+            height: 100%;
+            min-width: 55px;
+            max-width: 81px;
+            /* width: 10px; */
+            height: 68px;
+        }
+        .timer .time{
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .timer .label{
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+        }
+        @media (max-width:400px) {
+            h1{
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        .countdown{
+            padding: 10px 5px;
+        }
+            .timer{
+            padding: 40px;
+            margin: 4px 15px;
+            }
+        }
+        @media (max-width:370px) {
+            h1{
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        .countdown{
+            padding: 20px 5px;
+            
+        }
+            .timer{
+            padding: 20px;
+            margin: 4px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>We Are Coming Soon!</h1>
+    <div class="countdown">
+        <div class="timer">
+            <span class="time" id="days">10</span>
+            <span class="label">Days</span>
+        </div>
+        <div class="timer">
+            <span class="time" id="hours">12</span>
+            <span class="label">Hours</span>
+        </div>
+        <div class="timer">
+            <span class="time" id="mins">30</span>
+            <span class="label">Mins</span>
+        </div>
+        <div class="timer">
+            <span class="time" id="secs">12</span>
+            <span class="label">Secs</span>
+        </div>
+    </div>
+
+    <script>
+        const days = document.getElementById("days");
+        const hours = document.getElementById("hours");
+        const mins = document.getElementById("mins");
+        const secs = document.getElementById("secs");
+        
+        const formatTime = (time) => {
+            return time < 10 ? `0${time}` : time;
+        }
+
+        const updateCountDown = (deadline) => {
+            const currentTime = new Date();
+            const timeDifference = deadline - currentTime; //Miliseconds
+
+            //calculate days, hours, mins, secs from timeDifference 
+            let calcSecs = Math.floor(timeDifference/1000) % 60;
+            let calcMins = Math.floor(timeDifference/1000/60) % 60;
+            let calcHours = Math.floor(timeDifference/1000/60/60) % 24;
+            let calcDays = Math.floor(timeDifference/1000/60/60/24);
+
+            days.textContent = formatTime(calcDays);
+            mins.textContent = formatTime(calcMins);
+            hours.textContent =formatTime(calcHours);
+            secs.textContent = formatTime(calcSecs);
+
+        }
+        const countDown = (targetDate) => {
+            setInterval(() => updateCountDown(targetDate), 1000);
+        }
+
+        const targetDate = new Date ("November 23 2023 00:00");//Put Your time Here
+        countDown(targetDate);
+    </script>
+</body>
+</html>
