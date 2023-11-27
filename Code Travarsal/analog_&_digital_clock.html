@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+</head>
+
+<body>
+
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap);
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+            color: #000;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url(images/1.jpg) no-repeat center;
+            background-size: cover;
+        }
+
+
+        .container {
+            position: relative;
+            top: -90px;
+        }
+
+        .clock {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            ;
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clock span {
+            position: absolute;
+            transform: rotate(calc(30deg * var(--i)));
+            inset: 12px;
+            text-align: center;
+        }
+
+        .clock span b {
+            transform: rotate(calc(-30deg * var(--i)));
+            display: inline-block;
+            font-size: 20px;
+        }
+
+        /* .clock.clock-custom span{
+            position: absolute;
+            transform: rotate(calc(5deg * var(--d)));
+            inset: 12px;
+            text-align: center;
+            color: red;
+        } */
+
+        /* .clock .clock-custom span b{
+            transform: rotate(calc(-5deg * var(--d)));
+            display: inline-block;
+            font-size: 20px;
+        } */
+
+
+        .clock::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #fff;
+            z-index: 2;
+        }
+
+        .hand {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .hand i {
+            position: absolute;
+            background-color: var(--clr);
+            width: 4px;
+            height: var(--h);
+            border-radius: 8px;
+        }
+
+        
+
+        @media (max-width:240px) {
+            .container {
+            top: -40px;
+        }
+            .clock {
+            width: 185px;
+            height: 185px;
+        }
+        .hour i {
+            height: 27px;
+        }
+        .min i {
+            height: 40px;
+        }
+        .sec i{
+            height: 53px;
+        }
+        }
+    </style>
+
+
+    <div class="container">
+        <div class="clock">
+
+            <div style="--clr:#74ff3d; --h:67px;" id="hour" class="hand hour"><i></i></div>
+            <div style="--clr:#00a6ff; --h:84px;" id="min" class="hand min"><i></i></div>
+            <div style="--clr:#ff3434; --h:98px;" id="sec" class="hand sec"><i></i></div>
+
+            <span style="--i:1" ;><b>1</b></span>
+            <span style="--i:2" ;><b>2</b></span>
+            <span style="--i:3" ;><b>3</b></span>
+            <span style="--i:4" ;><b>4</b></span>
+            <span style="--i:5" ;><b>5</b></span>
+            <span style="--i:6" ;><b>6</b></span>
+            <span style="--i:7" ;><b>7</b></span>
+            <span style="--i:8" ;><b>8</b></span>
+            <span style="--i:9" ;><b>9</b></span>
+            <span style="--i:10" ;><b>10</b></span>
+            <span style="--i:11" ;><b>11</b></span>
+            <span style="--i:12" ;><b>12</b></span>
+            <!-- <div class="clock-custom">
+
+                <span style="--d:.";><b>.</b></span>
+                <span style="--d:.";><b>.</b></span>
+                <span style="--d:.";><b>.</b></span>
+                <span style="--d:.";><b>.</b></span>
+                <span style="--d:.";><b>.</b></span>
+                <span style="--d:.";><b>.</b></span>
+                <span style="--d:.";><b>.</b></span>
+                <span style="--d:.";><b>.</b></span>
+                <span style="--d:.";><b>.</b></span>
+                <span style="--d:.";><b>.</b></span>
+                <span style="--d:.";><b>.</b></span>
+                
+            </div> -->
+        </div>
+    </div>
+
+
+    <script>
+
+        let hr = document.getElementById('hour');
+        let min = document.getElementById('min');
+        let sec = document.getElementById('sec');
+
+        function displayTime() {
+            let date = new Date();
+
+            //Getting hour, Mins, Secs From Date
+            let hh = date.getHours();
+            let mm = date.getMinutes();
+            let ss = date.getSeconds();
+
+            let hRotation = 30 * hh + mm / 2;
+            let mRotation = 6 * mm;
+            let sRotation = 6 * ss;
+
+            hr.style.transform = `rotate(${hRotation}deg)`;
+            min.style.transform = `rotate(${mRotation}deg)`;
+            sec.style.transform = `rotate(${sRotation}deg)`;
+        }
+
+        setInterval(displayTime, 1000)
+    </script>
+
+
+    <style>
+        .digital{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position:absolute;
+            bottom: 70px;
+        }
+
+        .digital-clock{
+            width: 100%;
+            max-width: 380px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.7);
+            padding: 18px;
+            height: 20vh;
+            border-radius: 12px;
+        }
+
+        .digital-clock h1{
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .digital-clock span{
+            position: relative;
+            top: -13%;
+            margin-left: 5px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        @media screen and (max-width:400px){
+            .digital-clock{
+                max-width: 260px;
+                padding: 5px;
+            }
+            .digital-clock h1{
+                font-size: 1;
+            }
+        }
+
+        @media screen and (min-width:275px) and (max-width:400px){
+            .digital-clock{
+                max-width: 260px;
+                padding: 5px;
+            }
+            .digital-clock h1{
+                font-size: 1.4;
+            }
+        }
+
+        @media (max-width:240px) {
+            .digital{
+            bottom: 40px;
+        }
+            .digital-clock{
+            width: 100%;
+            max-width: 180px;
+        }
+        .digital-clock h1{
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        }
+    </style>    
+
+        <!-- EMMET KEYS:
+    .digital-clock>h1#time+span#timeformat -->
+<section class="digital">
+    <div class="digital-clock">
+        <h1 id="time">12:00:00:00</h1>
+        <span id="timeformat">AM</span>
+    </div>
+
+    <script>
+        const time = document.getElementById('time');
+        const timeformat = document.getElementById('timeformat');
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+            setInterval(showTime, 1000);
+        });
+
+        const showTime = () =>{
+            let date = new Date();
+
+            let hrr = date.getHours();
+            let minss = date.getMinutes();
+            let secss = date.getSeconds();
+
+
+            hrr = hrr<10 ? `0${hrr}` : hrr;
+            minss = minss<10 ? `0${minss}` : minss;
+            secss = secss<10 ? `0${secss}` : secss;
+
+
+            time.innerHTML = `${hrr} : ${minss} : ${secss}`;
+
+            timeformat.innerHTML = hrr>12 ? "PM" : "AM";
+
+            // time.innerHTML = hrr>12 ? `${hrr}` : hrr;
+            // console.log("hours: " + hr + "mins: " + mins + "secs:" + secs);
+        }
+    </script>
+</section>
+
+</body>
+
+</html>
