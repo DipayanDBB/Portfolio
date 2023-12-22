@@ -332,11 +332,19 @@
             .navbar .nav-links.show3 .links li .js-arrow {
                 transform: rotate(180deg);
             }
+                        .gif-img{
+                width: 120px;
+                height: 200px;
+            }
         }
 
         @media(max-width:370px) {
             nav .navbar .nav-links {
                 max-width: 100%;
+            }
+            .gif-nav{
+                width: 120px;
+                height: 220px;
             }
         }
     </style>
@@ -406,6 +414,7 @@
             </div>
         </div>
     </nav>
+        <img src="christmas.gif" class="gif-img" width="150px" height="250px" style="position: fixed; bottom: 60px; right: 0; margin-right: 70px; margin-bottom: 50px;" alt="Christmas GIF" title="Happy Christmas">
 
     <script>
         let navbar = document.querySelector(".navbar");
