@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera open using Input Element or Share button</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      background: #d4d4d4;
+      text-align: center;
+      overflow: hidden;
+      font-weight: 600;
+    }
+
+    main {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .test-container {
+      width: 80vw;
+      height: 100vh;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: column;
+      /* margin-top: 23%; */
+      /* margin-bottom: 25%; */
+      /* margin: 20% 30%; */
+    }
+    input[type="file"]{
+      color: #333;
+      font-size: 1.3rem;
+      text-align:center;
+      font-weight: 600;
+    }
+    input::-webkit-file-upload-button{
+      background: linear-gradient(60deg, purple, blue, red);
+      border-radius: 10px;
+      font-size: 1.1rem;
+      color: transparent;
+      padding: 5px 11px;
+      font-weight: 600;
+      background-clip:text;
+     /* box-shadow: 3px 4px 5px rgba(0,0,0,0.3), -3px -4px 5px rgba(255,255,255,0.3);*/
+    }
+
+    .test-1,
+    .test-2 {
+      border: 1px solid #333;
+      padding:5px 9px;
+      border-radius: 10px;
+      text-align: center;
+      display:flex;
+      align-items:center;
+    }
+
+    .test-1,
+    .test-2 {
+      display: inline-flex;
+    }
+
+    .test-1 input {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: 1rem;
+      text-align:center;
+    }
+
+    .test-2 input {
+      font-size: 1rem;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      text-align:center;
+    }
+
+    @media screen and (max-width:450px) {
+      input {
+        font-size: 1rem;
+      }
+
+      .test-1,
+      .test-2 {
+        padding: 5px 10x;
+      }
+      .test-container {
+      width: 10vw;
+    }
+    }
+
+      .btn {
+        padding: 9px 18px;
+        border-radius: 10px;
+        border: none;
+        cursor: grab;
+      }
+
+      .btn:active {
+        cursor: grabbing;
+      }
+
+      .btn .icon {
+        /* background: #b459; */
+        font-size: 22px;
+        gap: 1px;
+      }
+    .btn-link{
+      gap:1px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="test-container">
+      <div class="test-1">
+        <input type="file" capture="user">
+        <button id="test-1-btn" class="btn">
+          <i class="fab fa-whatsapp icon"></i>
+          <!-- <i class="fab fa-facebook icon"></i> -->
+        </button>
+
+        <button class="btn btn-link"><a href="http://wa.me/7980286224"><i class="fab fa-whatsapp icon"></i></a></button>
