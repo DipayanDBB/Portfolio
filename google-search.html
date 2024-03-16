@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"rel="stylesheet">
+    <style>
+        body {
+            min-height: 90vh;
+            background: #f6f6f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .container .img img {
+            width: 500px;
+            max-width: 100%;
+            mix-blend-mode: multiply;
+        }
+
+        .container .search {
+            margin-top: 20px;
+        }
+
+        .container .search .text {
+            position: relative; /* Make the parent container relative */
+        }
+
+        .container .search .text input {
+            padding: 8px 76px 8px 41px;
+            outline: none;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            border-radius: 30px;
+            width: 280px;
+            height: 30px;
+            font-size: 16px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .container .search .text .bi {
+            position: absolute; /* Position the icons absolutely */
+            top: 50%; /* Align vertically to the center */
+            transform: translateY(-50%); /* Adjust to vertically center */
+            cursor: pointer;
+        }
+
+        #clean {
+            display: none;
+            right: 60px; /* Adjust icon positioning */
+            font-size: 20px;
+        }
+
+        #search {
+            left: 15px;
+            /* top: 9px; Adjust icon positioning */
+            align-items: center;
+        }
+        #voice{
+            right: 40px;
+        }
+        #camera{
+            right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="google.webp" alt="">
+        </div>
+        <div class="search">
+            <span class="text">
+                <input type="text" id="text" title="Write your text Here" autofocus>
+                <i class="bi bi-x" id="clean" title="Clear"></i>
+                <i class="bi bi-search" id="search" title="Search"></i>
+                <i class="bi bi-mic" id="voice" title="Search by Voice"></i>
+                <i class="bi bi-camera" id="camera" title="Coming Soon, Stay Tuned!"></i>
+            </span>
+        </div>
+    </div>
+
+    <script>
+        let clean = document.getElementById('clean');
+        let search = document.getElementById('search');
+        let text = document.getElementById('text');
+    
+        // Function to save data to local storage
+        function saveToLocalStorage() {
+            const data = {
+                searchText: text.value,
+                cleanVisible: clean.style.display === 'block' ? 'visible' : 'hidden'
+            };
+            localStorage.setItem('searchData', JSON.stringify(data));
+        }
+    
+        // Function to load data from local storage
+        function loadFromLocalStorage() {
+            const savedDataString = localStorage.getItem('searchData');
+            if (savedDataString) {
+                const savedData = JSON.parse(savedDataString);
+                text.value = savedData.searchText;
+                if (savedData.cleanVisible === 'visible') {
+                    clean.style.display = 'block';
+                } else {
+                    clean.style.display = 'none';
+                }
+                if (text.value.length > 0) {
+                    search.style.display = 'block';
+                    // search.style.bottom = '-30px'; // Move the search icon down
+                }
+            }
+        }
+    
+        clean.addEventListener('click', () => {
+            text.value = '';
+            search.style.display = 'none';
+            clean.style.display = 'none';
+            saveToLocalStorage(); // Save data to local storage
+        });
+    
+        text.addEventListener('input', () => {
+            if (text.value.length > 0) {
+                clean.style.display = 'block';
+                search.style.display = 'block'; // Show the search icon if there's text in the input
+                // search.style.bottom = '-30px'; // Move the search icon down
+            } else {
+                clean.style.display = 'none';
+                search.style.display = 'none'; // Hide the search icon if there's no text in the input
+                search.style.bottom = '0'; // Reset the position of the search icon
+            }
+            saveToLocalStorage(); // Save data to local storage
+        });
+    
+        text.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            searchAction();
+        }
+    });
+
+    search.addEventListener('click', () => {
+        searchAction();
+    });
+
+    function searchAction() {
+        window.location.href = `https://www.google.com/search?q=${text.value}`;
+        text.value = ''; // Clear the input box after the search is executed
+        clean.style.display = 'none'; // Hide the clean icon after clearing the input box
+        saveToLocalStorage();
+    }
+
+    function searchAction() {
+        window.location.href = `https://www.google.com/search?q=${text.value}`
+    }
+
+    window.addEventListener('load', loadFromLocalStorage);
+
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+            // Page is restored from the cache (e.g., when navigating back)
+            text.value = ''; // Clear the input box when the page is shown
+            clean.style.display = 'none'; // Hide the clean icon after clearing the input box
+            saveToLocalStorage();
+        }
+    });
+    </script>
+    
+    
+</body>
+
+</html>
