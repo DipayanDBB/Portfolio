@@ -366,6 +366,7 @@
                         <a href="#">HTML & CSS</a>
                         <i class="bx bxs-chevron-down arrow htmlcss-arrow"></i>
                         <ul class="htmlCss-sub-menu sub-menu">
+                            <li><a href="happy-holi.html">Happy Holi</a></li>
                             <li><a href="google-search.html">Search on Google</a></li>
                             <li><a href="calculator.html">Calculator</a></li>
                             <li><a href="login_page_with_animated.html">Login Form</a></li>
@@ -456,6 +457,14 @@
         let jsArrow = document.querySelector(".js-arrow");
         jsArrow.addEventListener("click", () => {
             navLinks.classList.toggle("show3");
+        });
+                window.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+                document.addEventListener('keydown', function(event) {
+            if (event.keyCode === 123) { // F12 key code
+                event.preventDefault();
+            }
         });
     </script>
 </body>
