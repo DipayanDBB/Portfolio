@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact form to email using javascript</title>
+    <title>Contact To Developer</title>
     <style>
         @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap);
 
@@ -68,14 +68,14 @@
                         inset 10px 10px 10px -1px rgba(255,255,255,0.3);
         }
 
-        form button:active{
-            transform: scale(0.97);
-        }
-
         form button:hover{
             background: #ff6c78;
             box-shadow: inset 10px 10px 10px -1px rgba(0,0,0,0.3),
                         inset -10px -10px 10px -1px rgba(255,255,255,0.3);
+        }
+
+        form button:active{
+            transform: scale(0.97);
         }
     </style>
 </head>
@@ -87,21 +87,27 @@
             <input type="text" id="name" placeholder="Your Name" required>
             <input type="email" id="email" placeholder="Email ID" required>
             <input type="text" id="phone" placeholder="Phone No." required>
-            <textarea id="message" rows="4" placeholder="
-            How Can We Help You"></textarea>
+            <textarea id="message" class="message" rows="4" placeholder="How Can We Help You"></textarea>
             <button type="submit">Send</button>
         </form>
     </div>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
+        // let name = document.getElementById('name'); 
+        // let phone = document.getElementById('phone'); 
+        // let message = document.getElementById('message'); 
+        // let Email = document.getElementById('email'); 
         function sendEmail() {
             Email.send({
                 SecureToken: "f055889d-667b-4e17-af38-405eb0dc40f9",
-                // To: 'mr.dipayanbaul.db.dbb.bb@gmail.com',
+                // SecureToken: "e8bb6560-8ed3-428a-a0bc-4097fe3f0a3c",
                 To: 'contactsmedbb099@gmail.com',
+                // From: "Email.value",
                 From: "contactsmedbb099@gmail.com",
                 // From: document.getElementById("email").value,
-                Subject: "New Contact Form Enquiry",
+                Subject: document.getElementById("name").value
+                + document.getElementById("phone").value,
+                // Subject: "New Contact Form Enquiry",
                 Body: "Name: " + document.getElementById("name").value
                     + "<br> Email: " + document.getElementById("email").value
                     + "<br> Phone No: " + document.getElementById("phone").value
